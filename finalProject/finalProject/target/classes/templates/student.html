@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Student homepage</title>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<style>
+.content {
+	width: 40%;
+	font-size: 20px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+</style>
+<body>
+
+
+
+
+	<div align="center">
+
+		<div class="title">
+
+			<h1>
+				<b> Courses Management System</b>
+			</h1>
+
+		</div>
+		
+		<div>
+			<ul class="nav nav-tabs justify-content-end">
+				<li class="nav-item"><a class="nav-link"
+					href="/student_courses_overview">Courses Overview</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{'/selected_course'}">Selected courses</a></li>
+				<li class="nav-item"><a class="nav-link active" href="/student">[[${#request.userPrincipal.principal.Name}]]</a></li>
+				<li class="nav-item"><a class="nav-link" href="/">Logout</a></li>
+
+			</ul>
+		</div>
+		
+		
+
+	<div>
+		<div class="effect"></div>
+			<div class="bImg" align="center">
+				<div class="content">
+					<table class="table text-center" cellpadding="10"
+						th:object="${student}">
+						<thead>
+							<tr class="text-center">
+								<th colspan="2">
+									<h2>Your Profile:</h2>
+								</th>
+							</tr>
+						<thead>
+						<tbody>
+
+							<tr class="data">
+								<td>User ID:</td>
+								<td th:text="${student.userId}">Staff ID</td>
+							</tr>
+							<tr class="data">
+								<td>Name:</td>
+								<td th:text="${student.name}">Name</td>
+							</tr>
+							<tr class="data">
+								<td>E-mail:</td>
+								<td th:text="${student.email}">E-mail</td>
+							</tr>
+							<tr class="data">
+								<td>Phone:</td>
+								<td th:text="${student.phone}">Phone</td>
+							</tr>
+							<tr class="data">
+								<td>Address:</td>
+								<td th:text="${student.address}">Phone</td>
+							</tr>
+
+						</tbody>
+
+					</table>
+					<div class="d-flex justify-content-around">
+
+						<a class="btn btn-info"
+							th:href="@{'/editUser/' + ${student.userId}}">Modify profile</a> <a
+							class="btn btn-danger text-white" th:href="@{'/modifyPass'}">Modify
+							password</a>
+
+					</div>
+				</div>
+
+			</div>
+			
+
+		</div>
+
+
+		<footer>
+			<div
+				class="d-flex p-3 bg-secondary text-white justify-content-around mb-3">
+				<div class="p-2 ">About us</div>
+				<div class="p-2">Phone:1-382-784-9987</div>
+				<div class="p-2 ">Address: 3210, Saint Martin Est, Laval, H9W
+					2U8</div>
+			</div>
+		</footer>
+	</div>
+
+</body>
+</html>
